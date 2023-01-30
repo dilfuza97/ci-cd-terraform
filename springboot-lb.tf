@@ -1,6 +1,6 @@
-resource "kubernetes_deployment" "my_ak_deployment" {
+resource "kubernetes_deployment" "my_ak2_deployment" {
   metadata {
-    name = "my-ak-deployment"
+    name = "my-ak2-deployment"
   }
 
   spec {
