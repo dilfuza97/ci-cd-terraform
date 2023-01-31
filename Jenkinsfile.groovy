@@ -13,22 +13,22 @@ node('master') {
         sh "terraform version"
 
    stage("Terraform init") {
-     dir("${WORKSPACE}/kub_deployment/Jenkins_deployment") {
+     dir("${WORKSPACE}/ci-cd-terraform") {
        sh "terraform init"
      }
    }
 
    stage('Terraform Apply/Plan') {
          if (params.Terraform_apply) {
-           dir("${WORKSPACE}/kub_deployment/Jenkins_deployment") {
-             sh "terraform apply --auto-approve /kub_deployment/Jenkins_deployment"
+           dir("${WORKSPACE}/ci-cd-terraform") {
+             sh "terraform apply --auto-approve /ci-cd-terraform"
            }
         }
     }
 
     stage('Terraform Destoy') {
          if (params.Terraform_destroy) {
-          dir("${WORKSPACE}/kub_deployment/Jenkins_deployment") {
+          dir("${WORKSPACE}/ci-cd-terraform") {
              sh "terraform destroy --auto-approve /kub_deployment/Jenkins_deployment"
 
          }
