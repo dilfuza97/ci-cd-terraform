@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ak-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      containers:
+      - name: my-java-app
+        image: sherqodirov/mywebapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8085
+# service type ClusterIP | loadbalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-app-svc
+spec:
+  # type: ClusterIP
+  selector:
+    app: java-app
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
+  type: LoadBalancer
