@@ -1,5 +1,4 @@
-jenkins-ci-cd-eks
-
+JENKINS CI-CD-EKS
 eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed aws eks update-kubeconfig --region ap-northeast-1 --name jenkins-cluster Prerequests:
 
 Docker Hub Account
