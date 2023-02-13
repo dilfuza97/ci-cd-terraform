@@ -1,0 +1,12 @@
+stage ('Kubernetes Deploy') {
+        kubernetesDeploy(
+            configs: 'MyAwesomeApp/springBootDeploy.yml',
+            kubeconfigId: 'K8S',
+            enableConfigSubstitution: true
+            )
+    }
+    /*
+        stage ('Kubernetes Deploy using Kubectl') {
+          sh "kubectl apply -f MyAwesomeApp/springBootDeploy.yml"
+    }*/
+}
